@@ -3,25 +3,25 @@
 
 ROUND2_FILES = [
     {
-        "id": "file_001",
-        "filename": "LOG_001",
+        "id": "alpha",
+        "filename": "PROJECT_ALPHA",
         "file_type": "LOG",
         "required_fragment": None,
-        "content": "Round 2 log content will be added here."
+        "content": "Project Alpha evidence will be added here."
     },
     {
-        "id": "file_002",
-        "filename": "MEMO_001",
-        "file_type": "MEMO",
+        "id": "beta",
+        "filename": "PROJECT_BETA",
+        "file_type": "REPORT",
         "required_fragment": None,
-        "content": "Round 2 memo content will be added here."
+        "content": "Project Beta evidence will be added here."
     },
     {
-        "id": "file_003",
-        "filename": "RECORD_001",
-        "file_type": "RECORD",
+        "id": "gamma",
+        "filename": "PROJECT_GAMMA",
+        "file_type": "LOG",
         "required_fragment": None,
-        "content": "Round 2 record content will be added here."
+        "content": "Project Gamma evidence will be added here."
     }
 ]
 
@@ -52,3 +52,18 @@ def get_files_for_team(team_fragments):
         })
 
     return files
+
+def get_file_by_id(file_id, team_fragments):
+    # Find the requested file
+    for file in ROUND2_FILES:
+        if file["id"] == file_id:
+
+            # Check if the team is allowed to access it
+            if not is_file_unlocked(file, team_fragments):
+                return None
+
+            # Return the file content
+            return file
+
+    # File does not exist
+    return None

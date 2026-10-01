@@ -12,6 +12,7 @@ def create_tables():
                 member_2_name TEXT NOT NULL,
                 current_state TEXT,
                 round1_score INTEGER DEFAULT 0,
+                round1_auth_code TEXT,
                 round2_score INTEGER DEFAULT 0,
                 round3_score INTEGER DEFAULT 0,
                 total_score INTEGER DEFAULT 0,
@@ -45,6 +46,29 @@ def create_tables():
                 FOREIGN KEY (team_id) REFERENCES teams(id)
             );
 
+            CREATE TABLE IF NOT EXISTS round1_items (
+                item_id INTEGER PRIMARY KEY AUTOINCREMENT,
+                item_name TEXT NOT NULL,
+                image_path TEXT NOT NULL,
+                correct_era TEXT NOT NULL CHECK(correct_era IN ('PAST', 'PRESENT', 'FUTURE')),
+                clue_text TEXT,
+                points_positive FLOAT DEFAULT 2.0,
+                points_negative FLOAT DEFAULT 1.0,
+                is_active INTEGER DEFAULT 1
+            );
+
+            CREATE TABLE IF NOT EXISTS round1_submissions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                team_id INTEGER NOT NULL,
+                item_id INTEGER NOT NULL,
+                selected_era TEXT NOT NULL CHECK(selected_era IN ('PAST', 'PRESENT', 'FUTURE')),
+                is_correct INTEGER NOT NULL,
+                points_awarded FLOAT NOT NULL,
+                submitted_at TEXT DEFAULT CURRENT_TIMESTAMP,
+                FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE,
+                FOREIGN KEY (item_id) REFERENCES round1_items(item_id)
+            );
+
             CREATE TABLE IF NOT EXISTS hints (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 team_id INTEGER NOT NULL,
@@ -73,6 +97,8 @@ def create_tables():
                 FOREIGN KEY (team_id) REFERENCES teams(id)
             );
         """)
+
+        
         connection.commit()
     finally:
         connection.close()

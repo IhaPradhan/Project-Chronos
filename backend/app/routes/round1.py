@@ -11,10 +11,7 @@ def get_items():
 
 
 @router.post("/submit")
-def submit(item_id: str, answer: str):
-    result = submit_answer(item_id, answer)
-
-    if result is None:
-        return {"error": "Invalid item_id"}
+def submit(team_id: int, item_id: int, answer: str):
+    result = submit_answer(team_id, item_id, answer)
 
     return result

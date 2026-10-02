@@ -1,69 +1,82 @@
-# Temporary Round 2 file data
-# Actual files/content will be added after the event specification is finalized.
-
-ROUND2_FILES = [
-    {
-        "id": "alpha",
-        "filename": "PROJECT_ALPHA",
-        "file_type": "LOG",
-        "required_fragment": None,
-        "content": "Project Alpha evidence will be added here."
-    },
-    {
-        "id": "beta",
-        "filename": "PROJECT_BETA",
-        "file_type": "REPORT",
-        "required_fragment": None,
-        "content": "Project Beta evidence will be added here."
-    },
-    {
-        "id": "gamma",
-        "filename": "PROJECT_GAMMA",
-        "file_type": "LOG",
-        "required_fragment": None,
-        "content": "Project Gamma evidence will be added here."
-    }
-]
+from ..database.connection import get_connection
 
 
 def get_round2_files():
-    # Return the available Round 2 files
-    return ROUND2_FILES
-def is_file_unlocked(file, team_fragments):
-    # If no fragment is required, the file is available
-    if file["required_fragment"] is None:
-        return True
+    """Return all Round 2 evidence files."""
+    connection = get_connection()
 
-    # Check if the required fragment belongs to the team
-    return file["required_fragment"] in team_fragments
+    try:
+        rows = connection.execute("""
+            SELECT
+                file_id,
+                project_name,
+                timeline_tag,
+                filename,
+                content_text,
+                is_locked
+            FROM round2_files
+            ORDER BY file_id
+        """).fetchall()
 
-def get_files_for_team(team_fragments):
-    # Store the files with their locked/unlocked status
-    files = []
+        return [dict(row) for row in rows]
 
-    for file in ROUND2_FILES:
-        unlocked = is_file_unlocked(file, team_fragments)
+    finally:
+        connection.close()
 
-        files.append({
-            "id": file["id"],
-            "filename": file["filename"],
-            "file_type": file["file_type"],
-            "unlocked": unlocked
-        })
 
-    return files
+def get_files_for_team(team_id: int):
+    """
+    Return Round 2 evidence files available to a team.
 
-def get_file_by_id(file_id, team_fragments):
-    # Find the requested file
-    for file in ROUND2_FILES:
-        if file["id"] == file_id:
+    Team-specific authentication/unlocking will be integrated
+    once the final team authentication mechanism is connected.
+    """
+    connection = get_connection()
 
-            # Check if the team is allowed to access it
-            if not is_file_unlocked(file, team_fragments):
-                return None
+    try:
+        rows = connection.execute("""
+            SELECT
+                file_id,
+                project_name,
+                timeline_tag,
+                filename,
+                content_text,
+                is_locked
+            FROM round2_files
+            WHERE is_locked = 0
+            ORDER BY file_id
+        """).fetchall()
 
-            # Return the file content
-            return file
+        return [dict(row) for row in rows]
 
-    # File does not exist
-    return None
+    finally:
+        connection.close()
+
+
+def get_file_by_id(file_id: str, team_id: int):
+    """
+    Return one Round 2 evidence file if it is unlocked.
+    """
+    connection = get_connection()
+
+    try:
+        row = connection.execute("""
+            SELECT
+                file_id,
+                project_name,
+                timeline_tag,
+                filename,
+                content_text,
+                is_locked
+            FROM round2_files
+            WHERE file_id = ?
+              AND is_locked = 0
+        """, (file_id,)).fetchone()
+
+        if row is None:
+            return None
+
+        return dict(row)
+
+    finally:
+        connection.close()

@@ -1,0 +1,83 @@
+item_id,item_name,image_filename,correct_era,image_source_folder
+1,Zip Drive & Clicky Zip Disk,Zip Drive & Clicky Zip Disk.jpeg,PAST,PAST
+2,Gramophone,Gramophone_Past.png,PAST,PAST
+3,Overhead Transparency Projector,Overhead Transparency Projector.jpeg,PAST,PAST
+4,Hand Cranked Film Movie Camera,Hand-Cranked Film Movie Camera.jpeg,PAST,PAST
+5,Fax Machine,Fax_Machine_Past.png,PAST,PAST
+6,CRT Television,CRT_Television_Past.png,PAST,PAST
+7,Floppy Disk,Floppy_Disk_Past.png,PAST,PAST
+8,fax,fax_sps.png,PAST,PAST
+9,radio,radio_past.png,PAST,PAST
+10,Pager,Pager_Past.png,PAST,PAST
+11,camcorder,camcorder_sps.png,PAST,PAST
+12,sliderule,sliderule_sps.png,PAST,PAST
+13,steam locomotive past.png,steam_locomotive_past.png.png,PAST,PAST
+14,vinyl,vinyl_sps.png,PAST,PAST
+15,CRT Computer Terminal Green Screen Monitor,CRT Computer Terminal  Green-Screen Monitor.png,PAST,PAST
+16,cassette player,cassette_player_past.png,PAST,PAST
+17,mechanical typewriter,mechanical_typewriter_past.png,PAST,PAST
+18,mechanical adding machine past.png,mechanical_adding_machine_past.png.png,PAST,PAST
+19,payphone,payphone_sps.png,PAST,PAST
+20,record player,record_player_past.png,PAST,PAST
+21,gramophone,gramophone_sps.png,PAST,PAST
+22,Mainframe Tape Drive,Mainframe Tape Drive_sps.png,PAST,PAST
+23,microfilm reader past.png,microfilm_reader_past.png.png,PAST,PAST
+24,R2R tape,R2R-tape_sps.png,PAST,PAST
+25,CRT television,CRT_television_past(1).png,PAST,PAST
+26,telegraph,telegraph_sps.png,PAST,PAST
+27,punchcard,punchcard_sps.png,PAST,PAST
+28,Smarthone,Smarthone_Present.png,PRESENT,PRESENT
+29,VR Headset,VR_Headset_Present.png,PRESENT,PRESENT
+30,Robot vaccum,Robot_vaccum_Present.png,PRESENT,PRESENT
+31,3D Printer,3D_Printer_Present.png,PRESENT,PRESENT
+32,Commercial EV Fast Charging Station,Commercial EV Fast-Charging Station.jpeg,PRESENT,PRESENT
+33,Warehouse Autonomous Mobile Robot,Warehouse Autonomous Mobile Robot.jpeg,PRESENT,PRESENT
+34,Interactive Smart Whiteboard,Interactive Smart Whiteboard.jpeg,PRESENT,PRESENT
+35,smart lock,smart_lock_present.png,PRESENT,PRESENT
+36,3D printer,3D_printer_present (1).png,PRESENT,PRESENT
+37,Continuous Glucose Monitor (CGM) Sensor,Continuous Glucose Monitor (CGM) Sensor.jpeg,PRESENT,PRESENT
+38,3D printer,3D_printer_present(1).png,PRESENT,PRESENT
+39,robot lawn mower,robot_lawn_mower_present.png,PRESENT,PRESENT
+40,graphic card,graphic_card_present.png,PRESENT,PRESENT
+41,smart thermostat,smart_thermostat_present.png,PRESENT,PRESENT
+42,vaccum cleaner robot,vaccum_cleaner_robot_present.png,PRESENT,PRESENT
+43,server rack,server_rack_sps.png,PRESENT,PRESENT
+44,smartglasses,smartglasses_sps.png,PRESENT,PRESENT
+45,smart ring,smart_ring_sps.png,PRESENT,PRESENT
+46,wireless charging pad,wireless_charging_pad_sps.png,PRESENT,PRESENT
+47,solar panel,solar_panel_sps.png,PRESENT,PRESENT
+48,Satellite Internet Dish,Satellite Internet Dish_sps.png,PRESENT,PRESENT
+49,air purifier,air_purifier_present.png,PRESENT,PRESENT
+50,gaming console,gaming_console_present.png,PRESENT,PRESENT
+51,tablet,tablet_sps.png,PRESENT,PRESENT
+52,Drone,Drone_Present.png,PRESENT,PRESENT
+53,smart phone,smart_phone_present.png,PRESENT,PRESENT
+54,smart doorbell,smart_doorbell_sps.png,PRESENT,PRESENT
+55,USB flash drive,USB_flash_drive_present.png,PRESENT,PRESENT
+56,Sub Orbital Point to Point Rocket Passenger Pod,Sub-Orbital Point-to-Point Rocket Passenger Pod.jpeg,FUTURE,FUTURE
+57,Humanoid robot,Humanoid_robot_Future.png,FUTURE,FUTURE
+58,Exoskeleton,Exoskeleton_Future.png,FUTURE,FUTURE
+59,Solar Sailing Interstellar Micro Probe,Solar-Sailing Interstellar Micro-Probe.jpeg,FUTURE,FUTURE
+60,Quantum Computer,Quantum_Computer_future.png,FUTURE,FUTURE
+61,Bionic Eye or Retinal Prosthetic Implant,Bionic Eye or Retinal Prosthetic Implant.jpeg,FUTURE,FUTURE
+62,Future Car,Future_Car_Future.png,FUTURE,FUTURE
+63,Brain Computer Interface,Brain_Computer_Interface_Future.png,FUTURE,FUTURE
+64,humanoid robot,humanoid_robot_future(1).png,FUTURE,FUTURE
+65,Vertical Farm Automated Harvesting Drone,Vertical Farm Automated Harvesting Drone.jpeg,FUTURE,FUTURE
+66,BCI Device,BCI_Device_Future.png,FUTURE,FUTURE
+67,autonomous construction robot,autonomous_construction_robot_future.png,FUTURE,FUTURE
+68,hyperloop pod,hyperloop_pod_sps.png,FUTURE,FUTURE
+69,artificial photosynthesis reactor,artificial_photosynthesis_reactor_future.png,FUTURE,FUTURE
+70,quantum computer,quantum_computer_future(1).png,FUTURE,FUTURE
+71,Neuromorphic Chip processor,Neuromorphic Chip processor_sps.png,FUTURE,FUTURE
+72,quantum internet node,quantum_internet_node_sps.png,FUTURE,FUTURE
+73,underwater data center,underwater_data_center_future.png,FUTURE,FUTURE
+74,nanobot swarm,nanobot_swarm_sps.png,FUTURE,FUTURE
+75,AR contact lens,AR_contact_lens_future.png,FUTURE,FUTURE
+76,space elevator,space_elevator_sps.png,FUTURE,FUTURE
+77,flying taxi,flying_taxi.png,FUTURE,FUTURE
+78,fusion reactor,fusion reactor_sps.png,FUTURE,FUTURE
+79,organ printer,organ_printer_sps.png,FUTURE,FUTURE
+80,atmospheric harvester,atmospheric_harvester_sps.png,FUTURE,FUTURE
+81,self healing material,self_healing_material_future.png,FUTURE,FUTURE
+82,self driving car,self_driving_car_future.png,FUTURE,FUTURE

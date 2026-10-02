@@ -69,6 +69,18 @@ def create_tables():
                 FOREIGN KEY (item_id) REFERENCES round1_items(item_id)
             );
 
+            CREATE TABLE IF NOT EXISTS round1_team_items (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                team_id INTEGER NOT NULL,
+                item_id INTEGER NOT NULL,
+                assigned_at TEXT DEFAULT CURRENT_TIMESTAMP,
+
+                FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE,
+                FOREIGN KEY (item_id) REFERENCES round1_items(item_id) ON DELETE CASCADE,
+
+                UNIQUE(team_id, item_id)
+          );
+
             CREATE TABLE IF NOT EXISTS hints (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
                 team_id INTEGER NOT NULL,

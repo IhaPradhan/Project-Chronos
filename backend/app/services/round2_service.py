@@ -91,13 +91,11 @@ def get_team_case(team_id: int | str) -> dict[str, Any] | None:
     return case if isinstance(case, dict) else None
 
 
-DB_PATH = Path(os.getenv("CHRONOS_ROUND2_DB", "chronos_round2.sqlite3"))
+from ..database.connection import get_connection
 
 
 def _connect() -> sqlite3.Connection:
-    DB_PATH.parent.mkdir(parents=True, exist_ok=True)
-    con = sqlite3.connect(DB_PATH, timeout=2.0)
-    con.row_factory = sqlite3.Row
+    con = get_connection()
     con.execute("PRAGMA busy_timeout=2000")
     con.execute("""CREATE TABLE IF NOT EXISTS round2_state (
         team_id TEXT PRIMARY KEY,

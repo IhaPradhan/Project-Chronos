@@ -12,7 +12,7 @@ import httpx
 
 logger = logging.getLogger(__name__)
 
-MODEL = os.getenv("GEMINI_MODEL", "gemini-3.8-flash")
+MODEL = os.getenv("GEMINI_MODEL", "gemini-3.5-flash-lite")
 TOTAL_TIMEOUT_SECONDS = 6.0
 ATTEMPT_TIMEOUT_SECONDS = 2.5
 

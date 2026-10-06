@@ -1,0 +1,16 @@
+CHRONOS FUTURE THRESHOLD AUDIT
+WINDOW: 15:20-15:50
+
+15:33:12
+Warning threshold W-8 accessed.
+ACCOUNT: AS-17
+ACTION: MODIFY
+VALUE: 70 -> 95
+STATUS: AUTHORIZED
+
+15:33:14
+Threshold update propagated.
+15:36:49
+Early instability warnings no longer triggered.
+
+SOURCE CONSOLE: OPS-7

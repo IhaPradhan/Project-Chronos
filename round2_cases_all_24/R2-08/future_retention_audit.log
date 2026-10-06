@@ -1,0 +1,19 @@
+CHRONOS FUTURE RETENTION AUDIT
+WINDOW: 16:10-16:40
+
+16:22:18
+Archive retention policy accessed.
+ACCOUNT: MK-22
+ACTION: MODIFY
+RETENTION: 30 DAYS -> 4 DAYS
+STATUS: AUTHORIZED
+
+16:22:19
+Policy propagated to future archive nodes.
+16:24:51
+Older audit snapshots began expiring earlier than expected.
+
+AUTHENTICATION:
+ACCOUNT: MK-22
+SESSION SOURCE: CONSOLE-9
+CONSOLE STATUS: UNREGISTERED

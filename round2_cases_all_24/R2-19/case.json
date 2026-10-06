@@ -1,0 +1,35 @@
+{
+  "case_id": "R2-19",
+  "archetype": "Evidence Cover-Up",
+  "incident": "configuration change followed by selective audit cleanup",
+  "culprit": "Elias Voss",
+  "candidates": [
+    {
+      "name": "Elias Voss",
+      "user_id": "EV-04",
+      "role": "archive operator"
+    },
+    {
+      "name": "Aria Sen",
+      "user_id": "AS-17",
+      "role": "timeline analyst"
+    },
+    {
+      "name": "Noah Vale",
+      "user_id": "NV-09",
+      "role": "systems engineer"
+    },
+    {
+      "name": "Mira Kael",
+      "user_id": "MK-22",
+      "role": "security auditor"
+    }
+  ],
+  "player_files": {
+    "alpha": "future_configuration_audit.log",
+    "beta": "incident_report.txt",
+    "gamma": "access_history.log"
+  },
+  "intended_deduction": "The first modification identifies the incident actor; the later evidence export/deletion is the cover-up. Do not confuse the person investigating the evidence with the person who altered it.",
+  "difficulty_target": "medium-hard"
+}

@@ -1,0 +1,35 @@
+{
+  "case_id": "R2-10",
+  "archetype": "Compromised Identity",
+  "incident": "maintenance account used to alter synchronization priority",
+  "culprit": "Elias Voss",
+  "candidates": [
+    {
+      "name": "Elias Voss",
+      "user_id": "EV-04",
+      "role": "archive operator"
+    },
+    {
+      "name": "Aria Sen",
+      "user_id": "AS-17",
+      "role": "timeline analyst"
+    },
+    {
+      "name": "Noah Vale",
+      "user_id": "NV-09",
+      "role": "systems engineer"
+    },
+    {
+      "name": "Mira Kael",
+      "user_id": "MK-22",
+      "role": "security auditor"
+    }
+  ],
+  "player_files": {
+    "alpha": "future_sync_audit.log",
+    "beta": "incident_report.txt",
+    "gamma": "access_history.log"
+  },
+  "intended_deduction": "The archive operator's account appears in the log, but the session source and his scheduled work point elsewhere.",
+  "difficulty_target": "medium-hard"
+}

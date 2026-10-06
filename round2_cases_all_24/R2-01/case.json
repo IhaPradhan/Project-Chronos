@@ -1,0 +1,35 @@
+{
+  "case_id": "R2-01",
+  "archetype": "authorized_insider",
+  "incident": "Cross-timeline synchronization failure",
+  "culprit": "Noah Vale",
+  "candidates": [
+    {
+      "name": "Aria Sen",
+      "user_id": "AS-17",
+      "role": "timeline analyst"
+    },
+    {
+      "name": "Noah Vale",
+      "user_id": "NV-09",
+      "role": "systems engineer"
+    },
+    {
+      "name": "Mira Kael",
+      "user_id": "MK-22",
+      "role": "security auditor"
+    },
+    {
+      "name": "Elias Voss",
+      "user_id": "EV-04",
+      "role": "archive operator"
+    }
+  ],
+  "intended_deduction": "Authorized configuration modification introduced an incompatible synchronization value.",
+  "difficulty_target": "4/5",
+  "player_files": {
+    "alpha": "alpha_future.txt",
+    "beta": "beta_present.txt",
+    "gamma": "gamma_past.txt"
+  }
+}

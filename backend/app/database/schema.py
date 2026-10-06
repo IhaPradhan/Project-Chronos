@@ -108,6 +108,31 @@ def create_tables():
                 created_at TEXT,
                 FOREIGN KEY (team_id) REFERENCES teams(id)
             );
+
+            CREATE TABLE IF NOT EXISTS round2_chat_messages (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                team_id INTEGER NOT NULL,
+                question_number INTEGER NOT NULL,
+                user_prompt TEXT NOT NULL,
+                ai_response TEXT NOT NULL,
+                points_deducted INTEGER NOT NULL,
+                created_at TEXT DEFAULT CURRENT_TIMESTAMP,
+
+                FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
+            );
+
+            CREATE TABLE IF NOT EXISTS round2_submissions (
+                id INTEGER PRIMARY KEY AUTOINCREMENT,
+                team_id INTEGER NOT NULL,
+                suspect_identified TEXT NOT NULL,
+                is_correct INTEGER NOT NULL,
+                points_awarded INTEGER NOT NULL,
+                ai_points_remaining INTEGER NOT NULL,
+                round2_total_score INTEGER NOT NULL,
+                submitted_at TEXT DEFAULT CURRENT_TIMESTAMP,
+
+                FOREIGN KEY (team_id) REFERENCES teams(id) ON DELETE CASCADE
+            );
         """)
 
         

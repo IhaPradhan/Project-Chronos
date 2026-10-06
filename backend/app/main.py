@@ -1,3 +1,6 @@
+from dotenv import load_dotenv
+load_dotenv()
+
 from contextlib import asynccontextmanager
 from pathlib import Path
 
@@ -6,8 +9,7 @@ from fastapi.staticfiles import StaticFiles
 
 from .database.schema import create_tables
 from .routes.round1 import router as round1_router
-
-
+from .routes.round2 import router as round2_router
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     create_tables()
@@ -38,4 +40,8 @@ def home():
 app.include_router(
     round1_router,
     prefix="/api/round1"
+)
+
+app.include_router(
+    round2_router
 )

@@ -1,0 +1,15 @@
+CHRONOS INTERNAL INCIDENT REPORT
+INCIDENT DETECTED: 11:44:18
+
+Timeline-4 unexpectedly served older recovery snapshots.
+
+At 11:42 the maintenance process began normally.
+No operator manually initiated a rollback during the maintenance window.
+
+Known personnel:
+MIRA KAEL: security review.
+NOAH VALE: maintenance engineer.
+ARIA SEN: timeline analyst.
+ELIAS VOSS: archive operator.
+
+The incident appears to have been caused by a previously staged action.

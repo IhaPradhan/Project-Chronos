@@ -1,0 +1,35 @@
+{
+  "case_id": "R2-20",
+  "archetype": "Evidence Cover-Up",
+  "incident": "an incident-causing change is followed by alteration of the audit label",
+  "culprit": "Noah Vale",
+  "candidates": [
+    {
+      "name": "Noah Vale",
+      "user_id": "NV-09",
+      "role": "systems engineer"
+    },
+    {
+      "name": "Aria Sen",
+      "user_id": "AS-17",
+      "role": "timeline analyst"
+    },
+    {
+      "name": "Mira Kael",
+      "user_id": "MK-22",
+      "role": "security auditor"
+    },
+    {
+      "name": "Elias Voss",
+      "user_id": "EV-04",
+      "role": "archive operator"
+    }
+  ],
+  "player_files": {
+    "alpha": "future_audit_label.log",
+    "beta": "incident_report.txt",
+    "gamma": "access_history.log"
+  },
+  "intended_deduction": "Identify the causal configuration write before the audit-label edit; the later label change is meant to make the original action look routine.",
+  "difficulty_target": "medium-hard"
+}

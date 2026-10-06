@@ -1,0 +1,35 @@
+{
+  "case_id": "R2-11",
+  "archetype": "Compromised Identity",
+  "incident": "analyst account used to suppress a warning threshold",
+  "culprit": "Aria Sen",
+  "candidates": [
+    {
+      "name": "Aria Sen",
+      "user_id": "AS-17",
+      "role": "timeline analyst"
+    },
+    {
+      "name": "Noah Vale",
+      "user_id": "NV-09",
+      "role": "systems engineer"
+    },
+    {
+      "name": "Mira Kael",
+      "user_id": "MK-22",
+      "role": "security auditor"
+    },
+    {
+      "name": "Elias Voss",
+      "user_id": "EV-04",
+      "role": "archive operator"
+    }
+  ],
+  "player_files": {
+    "alpha": "future_threshold_audit.log",
+    "beta": "incident_report.txt",
+    "gamma": "access_history.log"
+  },
+  "intended_deduction": "Separate the legitimate analyst account from the console that issued the threshold change.",
+  "difficulty_target": "medium-hard"
+}

@@ -1,0 +1,23 @@
+CHRONOS INTERNAL INCIDENT REPORT
+CASE: CT-2281
+INCIDENT DETECTED: 18:56:44
+
+SYMPTOMS:
+- Future gate G-4 remained open beyond expected duration.
+- Event ordering began drifting after 18:53.
+- No hardware fault detected.
+
+INVESTIGATION:
+The change at 18:52:03 is the first configuration event preceding degradation.
+
+OWNER ACTIVITY:
+ARIA SEN was assigned to a remote analysis review from 18:47 to 18:55.
+Her workstation telemetry shows an active analysis session during that period.
+
+OTHER ACCESS:
+NOAH VALE entered the maintenance area at 18:49.
+MIRA KAEL reviewed security alerts at 18:54.
+ELIAS VOSS exported an archive at 18:57.
+
+NOTE:
+Account ownership and session origin must be distinguished.

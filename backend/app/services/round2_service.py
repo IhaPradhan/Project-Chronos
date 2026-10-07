@@ -483,7 +483,7 @@ def get_conversation(team_id: int):
                 points_deducted,
                 created_at
             FROM round2_chat_messages
-            WHERE id = ?
+            WHERE team_id = ?
             ORDER BY question_number
             """,
             (team_id,),
@@ -553,7 +553,7 @@ def submit_culprit(team_id: int, suspect: str):
             """
             SELECT COALESCE(SUM(points_deducted), 0)
             FROM round2_chat_messages
-            WHERE id = ?
+            WHERE team_id = ?
             """,
             (team_id,),
         ).fetchone()[0]

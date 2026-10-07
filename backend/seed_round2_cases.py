@@ -239,12 +239,10 @@ def assign_cases_to_teams(connection):
     New teams receive cases in deterministic rotation.
     """
 
-    # IMPORTANT:
-    # The real Project Chronos database uses teams.team_id,
-    # not teams.id.
+    # Follow the master database convention: teams.id is the canonical team id.
     teams = connection.execute(
         """
-        SELECT team_id, team_name
+        SELECT id AS team_id, team_name
         FROM teams
         ORDER BY team_id
         """

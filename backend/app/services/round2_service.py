@@ -1,3 +1,5 @@
+from datetime import datetime, timedelta
+
 from ..database.connection import get_connection
 
 
@@ -230,7 +232,7 @@ def get_team_state(team_id: int):
         team = connection.execute(
             """
             SELECT
-                team_id,
+                id AS team_id,
                 team_name,
                 current_state,
                 round2_score,
@@ -249,7 +251,7 @@ def get_team_state(team_id: int):
             """
             SELECT COUNT(*)
             FROM round2_chat_messages
-            WHERE id = ?
+            WHERE team_id = ?
             """,
             (team_id,),
         ).fetchone()[0]
@@ -273,7 +275,7 @@ def get_team_state(team_id: int):
                 round2_total_score,
                 submitted_at
             FROM round2_submissions
-            WHERE id = ?
+            WHERE team_id = ?
             ORDER BY id DESC
             LIMIT 1
             """,
@@ -284,9 +286,19 @@ def get_team_state(team_id: int):
             "team_id": team["team_id"],
             "team_name": team["team_name"],
             "current_state": team["current_state"],
-            "round2_score": team["round2_score"] or 0.0,
-            "round2_started_at": team["round2_started_at"],
-            "round2_completed_at": team["round2_completed_at"],
+            "r2_score": team["round2_score"] or 0.0,
+            "r2_start_time": team["round2_started_at"],
+            "r2_end_time": (
+                (
+                    datetime.strptime(
+                        team["round2_started_at"],
+                        "%Y-%m-%d %H:%M:%S",
+                    )
+                    + timedelta(minutes=20)
+                ).strftime("%Y-%m-%d %H:%M:%S")
+                if team["round2_started_at"]
+                else None
+            ),
             "ai_questions_used": chat_count,
             "ai_questions_remaining": max(
                 0,
@@ -310,7 +322,7 @@ def start_round2(team_id: int):
         team = connection.execute(
             """
             SELECT
-                team_id,
+                id AS team_id,
                 current_state,
                 round2_started_at,
                 round2_completed_at
@@ -334,8 +346,18 @@ def start_round2(team_id: int):
             return {
                 "success": True,
                 "already_started": True,
-                "round2_started_at": team["round2_started_at"],
-                "round2_completed_at": team["round2_completed_at"],
+                "r2_start_time": team["round2_started_at"],
+                "r2_end_time": (
+                    (
+                        datetime.strptime(
+                            team["round2_started_at"],
+                            "%Y-%m-%d %H:%M:%S",
+                        )
+                        + timedelta(minutes=20)
+                    ).strftime("%Y-%m-%d %H:%M:%S")
+                    if team["round2_started_at"]
+                    else None
+                ),
             }
 
         connection.execute(
@@ -489,7 +511,7 @@ def submit_culprit(team_id: int, suspect: str):
             """
             SELECT id
             FROM round2_submissions
-            WHERE id = ?
+            WHERE team_id = ?
             LIMIT 1
             """,
             (team_id,),

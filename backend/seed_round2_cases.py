@@ -65,7 +65,7 @@ def create_round2_case_tables(connection):
             assigned_at TEXT DEFAULT CURRENT_TIMESTAMP,
 
             FOREIGN KEY (team_id)
-                REFERENCES teams(team_id)
+                REFERENCES teams(id)
                 ON DELETE CASCADE,
 
             FOREIGN KEY (case_id)
@@ -177,22 +177,48 @@ def seed_cases(connection):
                 ),
             )
 
-        # Insert/update four suspects
-        for candidate in case["candidates"]:
+        # Keep exactly 3 live candidates per case: 1 culprit + 2 alternatives.
+        culprit_name = case["culprit"].strip().lower()
+
+        culprit_candidate = next(
+            (
+                candidate
+                for candidate in case["candidates"]
+                if candidate["name"].strip().lower() == culprit_name
+            ),
+            None,
+        )
+
+        if culprit_candidate is None:
+            raise ValueError(
+                f"{case['case_id']}: culprit is missing from candidates"
+            )
+
+        alternatives = [
+            candidate
+            for candidate in case["candidates"]
+            if candidate["name"].strip().lower() != culprit_name
+        ]
+
+        if len(alternatives) < 2:
+            raise ValueError(
+                f"{case['case_id']}: need at least 2 non-culprit candidates"
+            )
+
+        live_candidates = [culprit_candidate, *alternatives[:2]]
+
+        # Remove stale candidates so reseeding never leaves a 4th suspect.
+        connection.execute(
+            "DELETE FROM round2_case_suspects WHERE case_id = ?",
+            (case["case_id"],),
+        )
+
+        for candidate in live_candidates:
             connection.execute(
                 """
                 INSERT INTO round2_case_suspects
-                    (
-                        case_id,
-                        suspect_name,
-                        user_id,
-                        role
-                    )
+                    (case_id, suspect_name, user_id, role)
                 VALUES (?, ?, ?, ?)
-
-                ON CONFLICT(case_id, suspect_name) DO UPDATE SET
-                    user_id = excluded.user_id,
-                    role = excluded.role
                 """,
                 (
                     case["case_id"],
@@ -213,12 +239,10 @@ def assign_cases_to_teams(connection):
     New teams receive cases in deterministic rotation.
     """
 
-    # IMPORTANT:
-    # The real Project Chronos database uses teams.team_id,
-    # not teams.id.
+    # Follow the master database convention: teams.id is the canonical team id.
     teams = connection.execute(
         """
-        SELECT team_id, team_name
+        SELECT id AS team_id, team_name
         FROM teams
         ORDER BY team_id
         """

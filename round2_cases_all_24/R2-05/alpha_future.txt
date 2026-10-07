@@ -1,33 +1,42 @@
-CHRONOS ACCESS CONTROL AUDIT
+CHRONOS // ALPHA // FUTURE CONFIGURATION AUDIT
+CASE R2-05
+INCIDENT: Permission cascade
 
-23:02:18
-Diagnostic service permissions reviewed.
-ACTOR: NV-09
-ACTION: READ
-STATUS: AUTHORIZED
+CONFIGURATION DELTAS — T-15
 
-23:05:33
-Permission update initiated.
-ACTOR: NV-09
-ACTION: MODIFY
-STATUS: AUTHORIZED
+20:58:14  D-45
+RESOURCE: T-15
+CHANGE: observation window 90s -> 120s
+STATUS: APPROVED
 
-SERVICE:
-DIAG-7
+21:03:27  D-46
+RESOURCE: T-15
+CHANGE: prediction threshold 0.72 -> 0.68
+STATUS: APPROVED
 
-PREVIOUS SCOPE:
-DIAGNOSTIC/READ
+21:07:46  D-47
+RESOURCE: T-15
+CHANGE: recovery mode AUTO -> MANUAL
+STATUS: PENDING
 
-NEW SCOPE:
-DIAGNOSTIC/READ
-ALPHA/STATUS
-ALPHA/CONFIG
+21:09:11  D-48
+RESOURCE: T-15
+CHANGE: recovery window 30s -> 10s
+STATUS: APPROVED
 
-CHANGE REQUEST:
-AC-913
+21:12:03  D-47
+RESOURCE: T-15
+ACTION: REVERTED
 
-23:05:34
-REQUEST APPROVED.
+21:13:19  D-49
+RESOURCE: T-15
+CHANGE: safety threshold 0.68 -> 0.71
+STATUS: APPROVED
 
-23:05:35
-Permission profile activated.
+21:16:02  D-50
+RESOURCE: T-15
+CHANGE: archive verbosity LOW -> HIGH
+STATUS: APPROVED
+
+NOTE: approval status describes whether a change was permitted by workflow. It does not
+indicate whether the resulting state was causal to the incident.

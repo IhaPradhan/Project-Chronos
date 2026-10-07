@@ -25,8 +25,8 @@
       "role": "archive operator"
     }
   ],
-  "intended_deduction": "A legitimate emergency rollback restored an outdated but valid recovery profile.",
-  "difficulty_target": "4/5",
+  "intended_deduction": "Requires correlating multiple plausible configuration changes, incident timing, and access/session history; no single file identifies the culprit.",
+  "difficulty_target": "5/5",
   "player_files": {
     "alpha": "alpha_future.txt",
     "beta": "beta_present.txt",

@@ -1,34 +1,42 @@
-CHRONOS PREDICTION CONFIGURATION AUDIT
+CHRONOS // ALPHA // FUTURE CONFIGURATION AUDIT
+CASE R2-04
+INCIDENT: Prediction drift
 
-17:12:44
-Prediction cache accessed.
-ACTOR: EV-04
-ACTION: READ
-STATUS: AUTHORIZED
+CONFIGURATION DELTAS — T-14
 
-17:15:02
-Cache maintenance initiated.
-ACTOR: EV-04
-ACTION: MODIFY
-STATUS: AUTHORIZED
+20:58:14  D-44
+RESOURCE: T-14
+CHANGE: observation window 90s -> 120s
+STATUS: APPROVED
 
-PARAMETER:
-PREDICTION-SEED
+21:03:27  D-45
+RESOURCE: T-14
+CHANGE: prediction threshold 0.72 -> 0.68
+STATUS: APPROVED
 
-PREVIOUS:
-SEED-18
+21:07:46  D-46
+RESOURCE: T-14
+CHANGE: recovery mode AUTO -> MANUAL
+STATUS: PENDING
 
-NEW:
-SEED-21
+21:09:11  D-47
+RESOURCE: T-14
+CHANGE: recovery window 30s -> 10s
+STATUS: APPROVED
 
-CHANGE REQUEST:
-PC-441
+21:12:03  D-46
+RESOURCE: T-14
+ACTION: REVERTED
 
-17:15:04
-REQUEST APPROVED.
+21:13:19  D-48
+RESOURCE: T-14
+CHANGE: safety threshold 0.68 -> 0.71
+STATUS: APPROVED
 
-17:15:05
-New seed activated.
+21:16:02  D-49
+RESOURCE: T-14
+CHANGE: archive verbosity LOW -> HIGH
+STATUS: APPROVED
 
-NOTE:
-EV-04 possessed temporary maintenance authorization.
+NOTE: approval status describes whether a change was permitted by workflow. It does not
+indicate whether the resulting state was causal to the incident.

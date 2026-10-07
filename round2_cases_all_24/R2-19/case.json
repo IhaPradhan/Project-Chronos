@@ -30,6 +30,6 @@
     "beta": "incident_report.txt",
     "gamma": "access_history.log"
   },
-  "intended_deduction": "The first modification identifies the incident actor; the later evidence export/deletion is the cover-up. Do not confuse the person investigating the evidence with the person who altered it.",
-  "difficulty_target": "medium-hard"
+  "intended_deduction": "Requires correlating multiple plausible configuration changes, incident timing, and access/session history; no single file identifies the culprit.",
+  "difficulty_target": "5/5"
 }

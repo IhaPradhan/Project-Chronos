@@ -1,36 +1,42 @@
-CHRONOS ROUTING AUDIT
-TIMELINE: ALPHA
+CHRONOS // ALPHA // FUTURE CONFIGURATION AUDIT
+CASE R2-02
+INCIDENT: Cross-timeline routing fracture
 
-22:03:14
-Cross-Timeline Event Router accessed.
-ACTOR: MK-22
-ACTION: READ
-STATUS: AUTHORIZED
+CONFIGURATION DELTAS — T-12
 
-22:05:41
-Routing maintenance initiated.
-ACTOR: MK-22
-ACTION: MODIFY
-STATUS: AUTHORIZED
+20:58:14  D-42
+RESOURCE: T-12
+CHANGE: observation window 90s -> 120s
+STATUS: APPROVED
 
-ROUTE:
-BETA.EVENTS → ALPHA.STAGING
+21:03:27  D-43
+RESOURCE: T-12
+CHANGE: prediction threshold 0.72 -> 0.68
+STATUS: APPROVED
 
-PREVIOUS TARGET:
-BETA.INGEST
+21:07:46  D-44
+RESOURCE: T-12
+CHANGE: recovery mode AUTO -> MANUAL
+STATUS: PENDING
 
-NEW TARGET:
-ALPHA.STAGING
+21:09:11  D-45
+RESOURCE: T-12
+CHANGE: recovery window 30s -> 10s
+STATUS: APPROVED
 
-CHANGE REQUEST: RR-204
+21:12:03  D-44
+RESOURCE: T-12
+ACTION: REVERTED
 
-22:05:42
-REQUEST RR-204 APPROVED.
-APPROVAL SOURCE: SYSTEM-AUTH-07
+21:13:19  D-46
+RESOURCE: T-12
+CHANGE: safety threshold 0.68 -> 0.71
+STATUS: APPROVED
 
-22:05:44
-Routing profile activated.
+21:16:02  D-47
+RESOURCE: T-12
+CHANGE: archive verbosity LOW -> HIGH
+STATUS: APPROVED
 
-NOTE:
-RR-204 was a valid maintenance request.
-The new destination was permitted by the routing system.
+NOTE: approval status describes whether a change was permitted by workflow. It does not
+indicate whether the resulting state was causal to the incident.

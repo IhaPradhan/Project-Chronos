@@ -30,6 +30,6 @@
     "beta": "incident_report.txt",
     "gamma": "access_history.log"
   },
-  "intended_deduction": "The valid identity is not enough: correlate the session fingerprint in Alpha with the access trail and the owner's actual activity window.",
-  "difficulty_target": "medium-hard"
+  "intended_deduction": "Requires correlating multiple plausible configuration changes, incident timing, and access/session history; no single file identifies the culprit.",
+  "difficulty_target": "5/5"
 }

@@ -1,16 +1,45 @@
-CHRONOS FUTURE ROLLBACK SCHEDULE
-WINDOW: 06:00-12:00
+CHRONOS // ALPHA // FUTURE CONFIGURATION AUDIT
+CASE R2-14
+INCIDENT: a rollback was prepared hours earlier and triggered during an unrelated maintenance window
 
-06:18:22
-Rollback package RB-8 staged.
-ACTOR: MK-22
-TARGET: ALPHA/TIMELINE-4
-TRIGGER: MAINTENANCE-WINDOW-11
-STATUS: AUTHORIZED
+CONFIGURATION DELTAS — T-24
 
-11:42:00
-Maintenance window opened.
-11:42:03
-RB-8 automatically applied.
-11:44:18
-Timeline-4 began serving recovery snapshots.
+20:58:14  D-54
+RESOURCE: T-24
+CHANGE: observation window 90s -> 120s
+STATUS: APPROVED
+
+21:03:27  D-55
+RESOURCE: T-24
+CHANGE: prediction threshold 0.72 -> 0.68
+STATUS: APPROVED
+
+21:07:46  D-56
+RESOURCE: T-24
+CHANGE: recovery mode AUTO -> MANUAL
+STATUS: PENDING
+
+21:09:11  D-57
+RESOURCE: T-24
+CHANGE: recovery window 30s -> 10s
+STATUS: APPROVED
+
+21:12:03  D-56
+RESOURCE: T-24
+ACTION: REVERTED
+
+21:13:19  D-58
+RESOURCE: T-24
+CHANGE: safety threshold 0.68 -> 0.71
+STATUS: APPROVED
+
+21:16:02  D-59
+RESOURCE: T-24
+CHANGE: archive verbosity LOW -> HIGH
+STATUS: APPROVED
+
+NOTE: approval status describes whether a change was permitted by workflow. It does not
+indicate whether the resulting state was causal to the incident.
+
+SCHEDULER NOTE
+D-56 was queued before the visible incident window and became effective only when the scheduled window opened.

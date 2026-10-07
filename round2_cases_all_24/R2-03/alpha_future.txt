@@ -1,33 +1,42 @@
-CHRONOS RECOVERY AUDIT
-TIMELINE: GAMMA
+CHRONOS // ALPHA // FUTURE CONFIGURATION AUDIT
+CASE R2-03
+INCIDENT: Rollback paradox
 
-19:41:06
-Recovery profile accessed.
-ACTOR: AS-17
-ACTION: READ
-STATUS: AUTHORIZED
+CONFIGURATION DELTAS — T-13
 
-19:44:18
-Emergency rollback initiated.
-ACTOR: AS-17
-ACTION: MODIFY
-STATUS: AUTHORIZED
+20:58:14  D-43
+RESOURCE: T-13
+CHANGE: observation window 90s -> 120s
+STATUS: APPROVED
 
-ROLLBACK PROFILE:
-GAMMA-RECOVERY-12
+21:03:27  D-44
+RESOURCE: T-13
+CHANGE: prediction threshold 0.72 -> 0.68
+STATUS: APPROVED
 
-CURRENT ACTIVE PROFILE:
-GAMMA-STABLE-19
+21:07:46  D-45
+RESOURCE: T-13
+CHANGE: recovery mode AUTO -> MANUAL
+STATUS: PENDING
 
-ROLLBACK TARGET:
-GAMMA-RECOVERY-12
+21:09:11  D-46
+RESOURCE: T-13
+CHANGE: recovery window 30s -> 10s
+STATUS: APPROVED
 
-19:44:19
-Rollback approved.
-APPROVAL SOURCE: RECOVERY-AUTH-02
+21:12:03  D-45
+RESOURCE: T-13
+ACTION: REVERTED
 
-19:44:21
-Recovery profile deployed.
+21:13:19  D-47
+RESOURCE: T-13
+CHANGE: safety threshold 0.68 -> 0.71
+STATUS: APPROVED
 
-NOTE:
-The rollback profile is valid but predates the current synchronization baseline.
+21:16:02  D-48
+RESOURCE: T-13
+CHANGE: archive verbosity LOW -> HIGH
+STATUS: APPROVED
+
+NOTE: approval status describes whether a change was permitted by workflow. It does not
+indicate whether the resulting state was causal to the incident.

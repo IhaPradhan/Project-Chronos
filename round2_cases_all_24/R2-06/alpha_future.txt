@@ -1,32 +1,42 @@
-CHRONOS CACHE MAINTENANCE AUDIT
+CHRONOS // ALPHA // FUTURE CONFIGURATION AUDIT
+CASE R2-06
+INCIDENT: Temporal cache corruption
 
-20:21:17
-Temporal cache accessed.
-ACTOR: MK-22
-ACTION: READ
-STATUS: AUTHORIZED
+CONFIGURATION DELTAS — T-16
 
-20:24:39
-Cache synchronization mode changed.
-ACTOR: MK-22
-ACTION: MODIFY
-STATUS: AUTHORIZED
+20:58:14  D-46
+RESOURCE: T-16
+CHANGE: observation window 90s -> 120s
+STATUS: APPROVED
 
-CACHE MODE:
-LIVE-SYNC
+21:03:27  D-47
+RESOURCE: T-16
+CHANGE: prediction threshold 0.72 -> 0.68
+STATUS: APPROVED
 
-NEW MODE:
-SNAPSHOT-SYNC
+21:07:46  D-48
+RESOURCE: T-16
+CHANGE: recovery mode AUTO -> MANUAL
+STATUS: PENDING
 
-CHANGE REQUEST:
-TC-608
+21:09:11  D-49
+RESOURCE: T-16
+CHANGE: recovery window 30s -> 10s
+STATUS: APPROVED
 
-20:24:40
-REQUEST APPROVED.
+21:12:03  D-48
+RESOURCE: T-16
+ACTION: REVERTED
 
-20:24:42
-Snapshot synchronization activated.
+21:13:19  D-50
+RESOURCE: T-16
+CHANGE: safety threshold 0.68 -> 0.71
+STATUS: APPROVED
 
-NOTE:
-Snapshot mode is an approved diagnostic mode.
-It is not normally used on active production timelines.
+21:16:02  D-51
+RESOURCE: T-16
+CHANGE: archive verbosity LOW -> HIGH
+STATUS: APPROVED
+
+NOTE: approval status describes whether a change was permitted by workflow. It does not
+indicate whether the resulting state was causal to the incident.

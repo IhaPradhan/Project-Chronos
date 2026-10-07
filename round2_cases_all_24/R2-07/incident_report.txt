@@ -1,23 +1,28 @@
-CHRONOS INTERNAL INCIDENT REPORT
-CASE: CT-2281
-INCIDENT DETECTED: 18:56:44
+CHRONOS // BETA // PRESENT INCIDENT REPORT
+CASE R2-07
 
-SYMPTOMS:
-- Future gate G-4 remained open beyond expected duration.
-- Event ordering began drifting after 18:53.
-- No hardware fault detected.
+INCIDENT: credentialed maintenance session used to alter a timeline gate
 
-INVESTIGATION:
-The change at 18:52:03 is the first configuration event preceding degradation.
+21:14:02  FIRST INSTABILITY DETECTED
+21:15:18  prediction drift / synchronization variance begins
+21:16:04  automated recovery fails to restore expected state
+21:17:31  timeline synchronization drops below safe threshold
 
-OWNER ACTIVITY:
-ARIA SEN was assigned to a remote analysis review from 18:47 to 18:55.
-Her workstation telemetry shows an active analysis session during that period.
+PRELIMINARY ANALYSIS
+- the first approved threshold change is NOT sufficient to explain the failure.
+- telemetry indicates that the recovery subsystem entered a non-default state shortly
+  before the first failed recovery.
+- the relevant state was present for approximately 4–6 minutes before instability
+  became visible.
+- a later approved change occurred after the failure had already begun and is therefore
+  unlikely to be the initiating event.
 
-OTHER ACCESS:
-NOAH VALE entered the maintenance area at 18:49.
-MIRA KAEL reviewed security alerts at 18:54.
-ELIAS VOSS exported an archive at 18:57.
+POSSIBLE SOURCES
+1. prediction configuration
+2. recovery configuration
+3. operator override / scheduled state
 
-NOTE:
-Account ownership and session origin must be distinguished.
+INVESTIGATION NOTE
+Do not treat an APPROVED label as proof that the change was harmless.
+Do not treat a READ event as proof of modification.
+The initiating state must be reconstructed from the timeline and access history.

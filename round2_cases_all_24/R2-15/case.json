@@ -30,6 +30,6 @@
     "beta": "incident_report.txt",
     "gamma": "access_history.log"
   },
-  "intended_deduction": "The visible drift starts later than the destructive action; match the earlier invalidation with the first stale-cache symptom.",
-  "difficulty_target": "medium-hard"
+  "intended_deduction": "Requires correlating multiple plausible configuration changes, incident timing, and access/session history; no single file identifies the culprit.",
+  "difficulty_target": "5/5"
 }

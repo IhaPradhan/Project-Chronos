@@ -1,19 +1,28 @@
-CHRONOS INTERNAL INCIDENT REPORT
-INCIDENT DETECTED: 17:47:05
+CHRONOS // BETA // PRESENT INCIDENT REPORT
+CASE R2-18
 
-Router-2 entered recovery mode at 17:42:52.
-No manual operator was recorded at the moment of activation.
+INCIDENT: a preloaded failover mode activates after a delay and masks the original sequence
 
-MIRA KAEL:
-Security desk.
+21:14:02  FIRST INSTABILITY DETECTED
+21:15:18  prediction drift / synchronization variance begins
+21:16:04  automated recovery fails to restore expected state
+21:17:31  timeline synchronization drops below safe threshold
 
-ARIA SEN:
-Analysis.
+PRELIMINARY ANALYSIS
+- the first approved threshold change is NOT sufficient to explain the failure.
+- telemetry indicates that the recovery subsystem entered a non-default state shortly
+  before the first failed recovery.
+- the relevant state was present for approximately 4–6 minutes before instability
+  became visible.
+- a later approved change occurred after the failure had already begun and is therefore
+  unlikely to be the initiating event.
 
-NOAH VALE:
-Systems maintenance.
+POSSIBLE SOURCES
+1. prediction configuration
+2. recovery configuration
+3. operator override / scheduled state
 
-ELIAS VOSS:
-Archive.
-
-The active failover was loaded earlier with a fixed delay.
+INVESTIGATION NOTE
+Do not treat an APPROVED label as proof that the change was harmless.
+Do not treat a READ event as proof of modification.
+The initiating state must be reconstructed from the timeline and access history.

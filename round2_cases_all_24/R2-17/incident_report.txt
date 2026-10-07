@@ -1,13 +1,28 @@
-CHRONOS INTERNAL INCIDENT REPORT
-INCIDENT DETECTED: 12:37:26
+CHRONOS // BETA // PRESENT INCIDENT REPORT
+CASE R2-17
 
-A required temporary state disappeared during automated cleanup.
+INCIDENT: a future timestamp causes an automated cleanup to erase a needed state
 
-The cleanup process itself had no interactive operator.
-Known access:
-NOAH VALE: systems.
-ARIA SEN: analysis.
-MIRA KAEL: security.
-ELIAS VOSS: archive.
+21:14:02  FIRST INSTABILITY DETECTED
+21:15:18  prediction drift / synchronization variance begins
+21:16:04  automated recovery fails to restore expected state
+21:17:31  timeline synchronization drops below safe threshold
 
-The rule responsible was created well before the deletion.
+PRELIMINARY ANALYSIS
+- the first approved threshold change is NOT sufficient to explain the failure.
+- telemetry indicates that the recovery subsystem entered a non-default state shortly
+  before the first failed recovery.
+- the relevant state was present for approximately 4–6 minutes before instability
+  became visible.
+- a later approved change occurred after the failure had already begun and is therefore
+  unlikely to be the initiating event.
+
+POSSIBLE SOURCES
+1. prediction configuration
+2. recovery configuration
+3. operator override / scheduled state
+
+INVESTIGATION NOTE
+Do not treat an APPROVED label as proof that the change was harmless.
+Do not treat a READ event as proof of modification.
+The initiating state must be reconstructed from the timeline and access history.

@@ -30,6 +30,6 @@
     "beta": "incident_report.txt",
     "gamma": "access_history.log"
   },
-  "intended_deduction": "The cover-up is visible as a second action after the incident. The culprit is the actor linked to both the original change and the later snapshot deletion.",
-  "difficulty_target": "medium-hard"
+  "intended_deduction": "Requires correlating multiple plausible configuration changes, incident timing, and access/session history; no single file identifies the culprit.",
+  "difficulty_target": "5/5"
 }

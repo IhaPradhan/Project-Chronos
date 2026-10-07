@@ -260,7 +260,7 @@ def get_team_state(team_id: int):
             """
             SELECT COALESCE(SUM(points_deducted), 0)
             FROM round2_chat_messages
-            WHERE id = ?
+            WHERE team_id = ?
             """,
             (team_id,),
         ).fetchone()[0]

@@ -233,11 +233,11 @@ def get_team_state(team_id: int):
                 team_id,
                 team_name,
                 current_state,
-                r2_score,
-                r2_start_time,
-                r2_end_time
+                round2_score,
+                round2_started_at,
+                round2_completed_at
             FROM teams
-            WHERE team_id = ?
+            WHERE id = ?
             """,
             (team_id,),
         ).fetchone()
@@ -249,7 +249,7 @@ def get_team_state(team_id: int):
             """
             SELECT COUNT(*)
             FROM round2_chat_messages
-            WHERE team_id = ?
+            WHERE id = ?
             """,
             (team_id,),
         ).fetchone()[0]
@@ -258,7 +258,7 @@ def get_team_state(team_id: int):
             """
             SELECT COALESCE(SUM(points_deducted), 0)
             FROM round2_chat_messages
-            WHERE team_id = ?
+            WHERE id = ?
             """,
             (team_id,),
         ).fetchone()[0]
@@ -273,7 +273,7 @@ def get_team_state(team_id: int):
                 round2_total_score,
                 submitted_at
             FROM round2_submissions
-            WHERE team_id = ?
+            WHERE id = ?
             ORDER BY id DESC
             LIMIT 1
             """,
@@ -284,9 +284,9 @@ def get_team_state(team_id: int):
             "team_id": team["team_id"],
             "team_name": team["team_name"],
             "current_state": team["current_state"],
-            "r2_score": team["r2_score"] or 0.0,
-            "r2_start_time": team["r2_start_time"],
-            "r2_end_time": team["r2_end_time"],
+            "round2_score": team["round2_score"] or 0.0,
+            "round2_started_at": team["round2_started_at"],
+            "round2_completed_at": team["round2_completed_at"],
             "ai_questions_used": chat_count,
             "ai_questions_remaining": max(
                 0,
@@ -312,10 +312,10 @@ def start_round2(team_id: int):
             SELECT
                 team_id,
                 current_state,
-                r2_start_time,
-                r2_end_time
+                round2_started_at,
+                round2_completed_at
             FROM teams
-            WHERE team_id = ?
+            WHERE id = ?
             """,
             (team_id,),
         ).fetchone()
@@ -334,8 +334,8 @@ def start_round2(team_id: int):
             return {
                 "success": True,
                 "already_started": True,
-                "r2_start_time": team["r2_start_time"],
-                "r2_end_time": team["r2_end_time"],
+                "round2_started_at": team["round2_started_at"],
+                "round2_completed_at": team["round2_completed_at"],
             }
 
         connection.execute(
@@ -343,10 +343,10 @@ def start_round2(team_id: int):
             UPDATE teams
             SET
                 current_state = 'ROUND_2_ACTIVE',
-                r2_start_time = CURRENT_TIMESTAMP,
-                r2_end_time = DATETIME(CURRENT_TIMESTAMP, '+20 minutes'),
+                round2_started_at = CURRENT_TIMESTAMP,
+                round2_completed_at = NULL,
                 updated_at = CURRENT_TIMESTAMP
-            WHERE team_id = ?
+            WHERE id = ?
             """,
             (team_id,),
         )
@@ -356,10 +356,10 @@ def start_round2(team_id: int):
         row = connection.execute(
             """
             SELECT
-                r2_start_time,
-                r2_end_time
+                round2_started_at,
+                round2_completed_at
             FROM teams
-            WHERE team_id = ?
+            WHERE id = ?
             """,
             (team_id,),
         ).fetchone()
@@ -367,8 +367,8 @@ def start_round2(team_id: int):
         return {
             "success": True,
             "already_started": False,
-            "r2_start_time": row["r2_start_time"],
-            "r2_end_time": row["r2_end_time"],
+            "round2_started_at": row["round2_started_at"],
+            "round2_completed_at": row["round2_completed_at"],
         }
 
     finally:
@@ -461,7 +461,7 @@ def get_conversation(team_id: int):
                 points_deducted,
                 created_at
             FROM round2_chat_messages
-            WHERE team_id = ?
+            WHERE id = ?
             ORDER BY question_number
             """,
             (team_id,),
@@ -489,7 +489,7 @@ def submit_culprit(team_id: int, suspect: str):
             """
             SELECT id
             FROM round2_submissions
-            WHERE team_id = ?
+            WHERE id = ?
             LIMIT 1
             """,
             (team_id,),
@@ -531,7 +531,7 @@ def submit_culprit(team_id: int, suspect: str):
             """
             SELECT COALESCE(SUM(points_deducted), 0)
             FROM round2_chat_messages
-            WHERE team_id = ?
+            WHERE id = ?
             """,
             (team_id,),
         ).fetchone()[0]
@@ -569,10 +569,11 @@ def submit_culprit(team_id: int, suspect: str):
             """
             UPDATE teams
             SET
-                r2_score = ?,
+                round2_score = ?,
                 current_state = 'ROUND_2_COMPLETED',
+                round2_completed_at = CURRENT_TIMESTAMP,
                 updated_at = CURRENT_TIMESTAMP
-            WHERE team_id = ?
+            WHERE id = ?
             """,
             (
                 round2_total_score,

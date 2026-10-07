@@ -65,7 +65,7 @@ def create_round2_case_tables(connection):
             assigned_at TEXT DEFAULT CURRENT_TIMESTAMP,
 
             FOREIGN KEY (team_id)
-                REFERENCES teams(team_id)
+                REFERENCES teams(id)
                 ON DELETE CASCADE,
 
             FOREIGN KEY (case_id)

@@ -7,6 +7,6 @@
     "Evidence Cover-Up": 6
   },
   "files_per_case": 3,
-  "suspects_per_case": 4,
+  "suspects_per_case": 3,
   "note": "case.json contains server-side answer key; do not expose it to players or Gemini."
 }

@@ -386,11 +386,24 @@ def start_round2(team_id: int):
             (team_id,),
         ).fetchone()
 
+        r2_start_time = row["round2_started_at"]
+        r2_end_time = (
+            (
+                datetime.strptime(
+                    r2_start_time,
+                    "%Y-%m-%d %H:%M:%S",
+                )
+                + timedelta(minutes=20)
+            ).strftime("%Y-%m-%d %H:%M:%S")
+            if r2_start_time
+            else None
+        )
+
         return {
             "success": True,
             "already_started": False,
-            "round2_started_at": row["round2_started_at"],
-            "round2_completed_at": row["round2_completed_at"],
+            "r2_start_time": r2_start_time,
+            "r2_end_time": r2_end_time,
         }
 
     finally:
